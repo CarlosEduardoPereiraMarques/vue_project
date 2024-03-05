@@ -28,3 +28,51 @@
     background-color: #d1d1d1;
     border: 3px solid #4b5563;
 }
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-header {
+    display: flex;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+  }
+  
+  .table-header .cell {
+    flex: 1;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  
+  .table-row {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .table-row .cell {
+    flex: 1;
+    padding: 10px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+    
+  .table-row:last-child {
+    border-bottom: none;
+  }  
+    
+  /* Estilo para linhas alternadas */
+  .table-row:nth-child(even) {
+    background-color: #f9fafb;
+  }
+  
+  /* Estilo ao passar o mouse sobre a linha */
+  .table-row:hover {
+    background-color: #edf2f7;
+  }
+  .rotate-45 {
+    transform: rotate(45deg);
+  }
+  

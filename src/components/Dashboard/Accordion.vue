@@ -1,5 +1,5 @@
 <template>
-    <div class="border-2 p-2 rounded mt-2">
+    <div class="border-2 p-2 rounded-md-2">
         <div class="bg-gray-600 flex justify-between items-center" @click="toggleAccordion">
             <div class="text-gray-200 p-4 font-bold rounded cursor-pointer">{{ title }}</div>
             <div v-if="isOpen">

@@ -1,5 +1,11 @@
 <script setup>
 import Accordion from '../components/Dashboard/Accordion.vue'
+import LateSubmissions from '../components/Assignment/LateSubmissions.vue';
+import SubmissionsDelivered from '../components/Assignment/SubmissionsDelivered.vue';
+import SubmissionsNotDelivered from '../components/Assignment/SubmissionsNotDelivered.vue';
+import SubmissionsPendingReview from '../components/Assignment/SubmissionsPendingReview.vue';
+
+
 </script>
 
 <template>
@@ -24,46 +30,116 @@ import Accordion from '../components/Dashboard/Accordion.vue'
                 </button>
             </div>
         </div>
-        <Accordion title="Alunos">
-            <!-- Fazer um for pros alunos -->
-            <Accordion title="Aluno X">
-                Último Login: <span>XX/XX/XXXX</span>
-                Tempo total de Acesso à disciplina: <span>XX:XX:XX</span>
-                Data de Inclusão: <span>XX/XX/XXXX</span>
-                Notas: <span>Atividade X - Nota X</span> <!-- Pode ser um componente -->
-            </Accordion>
-        </Accordion>
+        <div>
+    <Accordion title="Alunos">
+      <div class="table">
+        <div class="table-header">
+          <div class="cell">Nomes:</div>
+        </div>
+        <template v-for="(aluno, index) in listaDeAlunos" :key="'row-' + index">
+          <div class="table-row">
+            <div class="cell flex items-center">{{ aluno.nome }}</div>
+            <div class="cell grid grid-cols-1 gap-4 place-items-end">
+              <button @click="toggleInformacoes(index)" class="inline-flex relative items-center py-[10px] px-[10px] bg-gray-600 text-white p-2 mt-2 rounded-md hover:bg-gray-400 transition duration-300">
+                <svg v-if="!alunoExpandido || alunoIndex !== index" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607ZM10.5 7.5v6m3-3h-6" />
+                </svg>
+                <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607ZM13.5 10.5h-6" />
+                </svg>
+                <span v-if="!alunoExpandido || alunoIndex !== index">Detalhes</span>
+                <span v-else>Ocultar detalhes</span>
+              </button>
+            </div>
+          </div>
+          <div v-if="alunoIndex === index && alunoExpandido" :key="'details-' + index" class="table-row">
+            <div class="cell" colspan="2"> <!-- Colspan para ocupar a largura da tabela -->
+              <p><strong>Nome:</strong> {{ aluno.nome }}</p>
+              <p><strong>Último Login:</strong> {{ aluno.ultimoLogin }}</p>
+              <p><strong>Tempo de Acesso:</strong> {{ aluno.tempoAcesso }}</p>
+              <p><strong>Data de Inclusão:</strong> {{ aluno.dataInclusao }}</p>
+              <p><strong>Notas:</strong> {{ aluno.notas }}</p>
+            </div>
+          </div>
+        </template>
+      </div>
+    </Accordion>
+  </div>
+    <div>
         <Accordion title="Anúncios">
             <!-- Fazer um for pros anúncios -->
-            <Accordion>
-                Nome: <span>X</span>
-                Criado em: <span>XX/XX/XXXX</span>
-                Postado em: <span>XX/XX/XXXX XX:XX:XXXX</span>
-                Nome do Autor: <span>X</span>
-                Conteúdo da mensagem: <span>XXX</span> <!-- Pode ser um componente -->
-            </Accordion>
+            <div class="table">
+        <div class="table-header">
+            <div class="cell">Nome:</div>
+            <div class="cell">Criado em:</div>
+            <div class="cell">Postado em:</div>
+            <div class="cell">Nome do Autor:</div>
+            <div class="cell">Conteúdo da mensagem:</div>
+        </div>
+        <template v-for="(anuncio, index) in listaDeAnuncios" :key="'anuncio-' + index">
+            <div class="table-row">
+                <div class="cell">{{ anuncio.nome }}</div>
+                <div class="cell">{{ anuncio.criadoEm }}</div>
+                <div class="cell">{{ anuncio.postadoEm }}</div>
+                <div class="cell">{{ anuncio.nomeAutor }}</div>
+                <div class="cell">{{ anuncio.conteudoMensagem }}</div>
+            </div>
+        </template>
+    </div>
         </Accordion>
-        <Accordion title="Fórum">
-            <!-- Fazer um for pros fóruns -->
-            <Accordion>
-                Nome: <span>X</span>
-                Criado em: <span>XX/XX/XXXX</span>
-                Postado em: <span>XX/XX/XXXX XX:XX:XXXX</span>
-                Nome do Autor: <span>X</span>
-                Conteúdo da mensagem: <span>XXX</span> <!-- Pode ser um componente -->
-                Última resposta em: <span>XX/XX/XXXX</span>
-            </Accordion>
+    </div>
+    <Accordion title="Fórum">
+        <div class="table">
+            <div class="table-header">
+                <div class="cell">Nome:</div>
+                <div class="cell">Criado em:</div>
+                <div class="cell">Postado em:</div>
+                <div class="cell">Nome do Autor:</div>
+                <div class="cell">Conteúdo da mensagem:</div>
+                <div class="cell">Última resposta em:</div>
+            </div>
+            <!-- Aqui você pode fazer um loop para os fóruns -->
+            <template v-for="(forum, index) in listaDeForuns" :key="'forum-' + index">
+                <div class="table-row">
+                    <div class="cell">{{ forum.nome }}</div>
+                    <div class="cell">{{ forum.criadoEm }}</div>
+                    <div class="cell">{{ forum.postadoEm }}</div>
+                    <div class="cell">{{ forum.nomeAutor }}</div>
+                    <div class="cell">{{ forum.conteudoMensagem }}</div>
+                    <div class="cell">{{ forum.ultimaRespostaEm }}</div>
+                </div>
+            </template>
+        </div>
+    </Accordion>
+    <div>
+    <Accordion title="Atividades">
+      <template v-for="(assignment, index) in listaDeAtividades" :key="'assignment-' + index">
+        <Accordion :title="assignment.name">
+          <Accordion title="Submissões atrasadas:">
+            <div class="table">
+              <LateSubmissions :assignment="assignment"/>
+              <!-- Componente para mostrar notas -->
+            </div>
+          </Accordion>
+          <Accordion title="Submissões entregues:">
+            <div class="table">
+              <SubmissionsDelivered :assignment="assignment"/>
+            </div>
+          </Accordion>
+          <Accordion title="Submissões não entregues:">
+            <div class="table">
+              <SubmissionsNotDelivered :assignment="assignment"/>
+            </div>
+          </Accordion>
+          <Accordion title="Submissões pendentes de revisão:">
+            <div class="table">
+              <SubmissionsPendingReview :assignment="assignment"/>
+            </div>
+          </Accordion>
         </Accordion>
-        <Accordion title="Atividades">
-            <!-- Fazer um for pras atividades -->
-            <Accordion title="{{ assignment.name }}">
-                Submissões atrasadas: <!-- Transformar em componente -->
-                Submissões entregues: <!-- Transformar em componente -->
-                Submissões não entregues: <!-- Transformar em componente -->
-                Submissões pendente de revisão: <!-- Transformar em componente -->
-                Notas: <!-- Pode ser um componente -->
-            </Accordion>
-        </Accordion>
+      </template>
+    </Accordion>
+  </div>
         <Accordion title="Vídeos">
             <Accordion title="Engajamento">
                 <!-- Fazer um for para cada video -->
@@ -74,10 +150,54 @@ import Accordion from '../components/Dashboard/Accordion.vue'
                 <Accordion title="{{ video.comments }}"></Accordion>
             </Accordion>
         </Accordion>
+
     </main>
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      listaDeAlunos: [
+        { nome: 'João Silva Costa', ultimoLogin: '2024-02-21', tempoAcesso: '3 horas', dataInclusao: '2023-10-15', notas: '10' },
+        { nome: 'Maria Oliveira', ultimoLogin: '2024-02-20', tempoAcesso: '2 horas', dataInclusao: '2023-09-25', notas: '10' },
+        { nome: 'Pedro Santos', ultimoLogin: '2024-02-19', tempoAcesso: '4 horas', dataInclusao: '2023-08-12', notas: '10' },
+        { nome: 'Ana Pereira', ultimoLogin: '2024-02-18', tempoAcesso: '1 hora', dataInclusao: '2023-07-30', notas: '10' },
+        { nome: 'João Silva Costa', ultimoLogin: '2024-02-21', tempoAcesso: '3 horas', dataInclusao: '2023-10-15', notas: '10' },
+        { nome: 'Maria Oliveira', ultimoLogin: '2024-02-20', tempoAcesso: '2 horas', dataInclusao: '2023-09-25', notas: '10' },
+        { nome: 'Pedro Santos', ultimoLogin: '2024-02-19', tempoAcesso: '4 horas', dataInclusao: '2023-08-12', notas: '10' },
+        { nome: 'Ana Pereira', ultimoLogin: '2024-02-18', tempoAcesso: '1 hora', dataInclusao: '2023-07-30', notas: '10' }
+      ],
+      listaDeAnuncios: [
+        { nome: 'Acesso aos Livros Eletrônicos - Biblioteca PUC Minas (Atualizado).', criadoEm: '2024-02-21', postadoEm: '2024-02-21', nomeAutor: 'Autor 1', conteudoMensagem: 'Prezados usuários,Com grande satisfação informamos que o sistema de consulta da Biblioteca foi atualizado, disponibilizandoinformações sobre livros e periódicos (físicos e eletrônicos), bases ' },
+        { nome: 'Destaque Acadêmico 2023/2', criadoEm: '2024-02-20', postadoEm: '2024-02-20', nomeAutor: 'Autor 2', conteudoMensagem: 'Prezados alunos, boa tarde!Apresentamos o destaque acadêmico do curso Superior de Análise e Desenvolvimento de Sistemas do 2/2023!Parabéns, Fabiana Alkmim Avelar!!! 👏🎉' },
+        { nome: 'Recesso Carnaval e quarta-feira de cinzas', criadoEm: '2024-02-19', postadoEm: '2024-02-19', nomeAutor: 'Autor 3', conteudoMensagem: 'Prezados alunos, boa tarde!Informamos que estaremos em recesso escolar, do corpo docente e administrativo entre os dias 10 a 13 de fevereiro, devido ao Carnaval e dia 14 de fevereiro' },
+        ],
+      listaDeForuns: [
+        { nome: 'Transferência de turma', criadoEm: '2024-02-21', postadoEm: '2024-02-21', nomeAutor: 'Camila Cristina Gonçalves Marques De Moura', conteudoMensagem: 'Podemos fazer a transferência de turma sim. Peço que envie a solicitação pela caixa de entrada para registrarmos ok?', ultimaRespostaEm: '2024-02-21' },
+        { nome: 'Informações sobre início das aulas e divisão de turmas', criadoEm: '2024-02-20', postadoEm: '2024-02-20', nomeAutor: 'Winnie Yvelise Brandao Moret', conteudoMensagem: 'Boa tarde, pessoal, sou Ernane aqui de BH. Não pude participar dos encontros síncronos. Alguém tem notícia do início das aulas, divisão de turmas, ou outras informações?', ultimaRespostaEm: '2024-02-20' },
+        { nome: 'Fórum de dúvidas - Eixo: Empreendedorismo e Inovação com Sistemas de Software', criadoEm: '2024-02-19', postadoEm: '2024-02-19', nomeAutor: 'Autor 3', conteudoMensagem: 'Este espaço foi criado para ajudar você a solucionar suas dúvidas pontuais mais rapidamente. Através desta ferramenta seus questionamentos são respondidos diretamente pelos tutores.', ultimaRespostaEm: '2024-02-19' },
+    ],
+    listaDeAtividades: [
+        { name: 'Atividade 1', },
+        { name: 'Atividade 2', },
+        { name: 'Atividade 3', },
 
+      ],
+      alunoExpandido: false,
+      alunoIndex: null
+    };
+  },
+  methods: {
+    toggleInformacoes(index) {
+        console.log("Aluno clicado:", this.listaDeAlunos[index]);
+      if (this.alunoIndex === index) {
+        this.alunoExpandido = !this.alunoExpandido;
+      } else {
+        this.alunoExpandido = true;
+      }
+      this.alunoIndex = index;
+    }
+  }
+};
 </script>
-
