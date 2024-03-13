@@ -19,8 +19,7 @@ const routes = [
         name: "Login",
         component: Login,
         meta: {
-            title: 'Login',
-            useLayout: false
+            title: 'Login'
         }
     },
     {
@@ -28,8 +27,7 @@ const routes = [
         name: "HomePage",
         component: HomePage,
         meta: {
-            title: 'Home',
-            useLayout: true
+            title: 'Home'
         }
     },
     {
@@ -37,8 +35,7 @@ const routes = [
         name: "Dashboard",
         component: Dashboard,
         meta: {
-            title: 'Dashboard',
-            useLayout: true
+            title: 'Dashboard'
         }
     },
     {
@@ -46,8 +43,7 @@ const routes = [
         name: "Dashboard Data",
         component: DashboardData,
         meta: {
-            title: 'Informações do Curso',
-            useLayout: true
+            title: 'Informações do Curso'
         }
     },
     {
@@ -55,8 +51,7 @@ const routes = [
         name: "Messages",
         component: Messages,
         meta: {
-            title: 'Mensagens',
-            useLayout: true
+            title: 'Mensagens'
         }
     },
     {
@@ -64,8 +59,7 @@ const routes = [
         name: "Students",
         component: Students,
         meta: {
-            title: 'Estudantes',
-            useLayout: true
+            title: 'Estudantes'
         }
     },
     {
@@ -73,8 +67,7 @@ const routes = [
         name: "Announcement",
         component: Announcement,
         meta: {
-            title: 'Publicar Anúncio',
-            useLayout: true
+            title: 'Publicar Anúncio'
         }
     },
     {
@@ -82,8 +75,7 @@ const routes = [
         name: "Forum",
         component: Forums,
         meta: {
-            title: 'Fóruns Pendentes',
-            useLayout: true
+            title: 'Fóruns Pendentes'
         }
     },
     {
@@ -91,8 +83,7 @@ const routes = [
         name: "TccArea",
         component: TccArea,
         meta: {
-            title: 'Área TCC',
-            useLayout: true
+            title: 'Área TCC'
         }
     },
     {
@@ -100,8 +91,7 @@ const routes = [
         name: "ViewAllocations",
         component: ViewAllocations,
         meta: {
-            title: 'Visualizar Alocações',
-            useLayout: true
+            title: 'Visualizar Alocações'
         }
     },
     {
@@ -109,8 +99,7 @@ const routes = [
         name: "AddAllocations",
         component: AddAllocations,
         meta: {
-            title: 'Realizar Alocações',
-            useLayout: true
+            title: 'Realizar Alocações'
         }
     },
     {
@@ -118,8 +107,7 @@ const routes = [
         name: "RemoveAllocations",
         component: RemoveAllocations,
         meta: {
-            title: 'Remover Alocações',
-            useLayout: true
+            title: 'Remover Alocações'
         }
     }
 ]

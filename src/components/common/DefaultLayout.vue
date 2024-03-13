@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <div class="w-screen h-screen flex ">
+    <div class="w-screen h-screen flex" v-if="showLayout">
         <Sidebar :showSideBar="showSideBar" />
         <div class="w-full h-full bg-gray-400">
             <Menu :showSideBar="showSideBar" @toggle-sidebar="toggleSideBar" />
@@ -16,6 +16,9 @@
             </div>
         </div>
     </div>
+    <div v-else>
+        <router-view/>
+    </div>
 </template>
 
 <script>
@@ -23,6 +26,16 @@ const showSideBar = ref(true);
 
 function toggleSideBar() {
     showSideBar.value = !showSideBar.value;
+}
+
+export default {
+    computed: {
+        showLayout: {
+            get() {
+                return this.$store.state.showLayout
+            }
+        }
+    }
 }
 </script>
 

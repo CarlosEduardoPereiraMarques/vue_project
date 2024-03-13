@@ -11,9 +11,5 @@ export default {
         }
     },
   },
-
   plugins: [],
-
 }
-
-

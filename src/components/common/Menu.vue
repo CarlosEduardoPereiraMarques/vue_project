@@ -7,11 +7,11 @@
         </div>
         <div class="w-[100%] flex justify-end items-end">
             <div class="flex items-center justify-start space-x-4">
-                <img class="w-10 h-10 rounded-full border-2 border-gray-50" src="#UserPhoto.Link" alt="UserPhoto" />
+                <img class="w-10 h-10 rounded-full border-2 border-gray-50" :src="userPhotoUrl" alt="UserPhoto" />
                 <div class="font-semibold text-gray-250 text-left">
-                    <div>UserName</div>
+                    <div>{{ userName }}</div>
                     <div class="text-xs text-gray-500 dark:text-gray-400">
-                        UserRole
+                        {{ userRole }}
                     </div>
                 </div>
             </div>
@@ -21,6 +21,23 @@
 
 <script>
 export default {
+    computed: {
+        userName: {
+            get() {
+                return this.$store.state.userName
+            }
+        },
+        userRole: {
+            get() {
+                return this.$store.state.userRole
+            }
+        },
+        userPhotoUrl: {
+            get() {
+                return this.$store.state.userPhotoUrl
+            }
+        }
+    },
     props: {
         showSideBar: Boolean,
     },

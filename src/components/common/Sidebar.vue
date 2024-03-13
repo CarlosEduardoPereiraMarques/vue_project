@@ -113,30 +113,32 @@
                     Remover Alocações
                 </router-link>
             </div>
-            <div class="h-[35px]">
-                <router-link to="/setting"
-                    class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out">
+            <div class="h-[35px]" @click="handleLogOut">
+                <a
+                    class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-gray-300 hover:text-gray-800 transition duration-400 ease-in-out cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 w-[25px] h-[25px]" width="24" height="24"
                         viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M10 3H6a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h4M16 17l5-5-5-5M19.8 12H9" />
                     </svg>
                     Log Out
-                </router-link>
+                </a>
             </div>
         </div>
     </div>
-</div></template>
+</div>
+</template>
 
 <script>
 export default {
     props: {
         showSideBar: Boolean,
     },
-    data() {
-        return {
-        };
+    methods: {
+        handleLogOut() {
+            this.$store.dispatch('getLogOut')
+            this.$router.push('/')
+        }
     }
 }
 </script>
-
