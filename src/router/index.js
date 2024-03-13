@@ -15,11 +15,12 @@ import RemoveAllocations from "../views/RemoveAllocations.vue";
 
 const routes = [
     {
-        path: "/",
+        path: "",
         name: "Login",
         component: Login,
         meta: {
-            title: 'Login'
+            title: 'Login',
+            useLayout: false
         }
     },
     {
@@ -27,7 +28,8 @@ const routes = [
         name: "HomePage",
         component: HomePage,
         meta: {
-            title: 'Home'
+            title: 'Home',
+            useLayout: true
         }
     },
     {
@@ -35,7 +37,8 @@ const routes = [
         name: "Dashboard",
         component: Dashboard,
         meta: {
-            title: 'Dashboard'
+            title: 'Dashboard',
+            useLayout: true
         }
     },
     {
@@ -43,7 +46,8 @@ const routes = [
         name: "Dashboard Data",
         component: DashboardData,
         meta: {
-            title: 'Informações do Curso'
+            title: 'Informações do Curso',
+            useLayout: true
         }
     },
     {
@@ -51,7 +55,8 @@ const routes = [
         name: "Messages",
         component: Messages,
         meta: {
-            title: 'Mensagens'
+            title: 'Mensagens',
+            useLayout: true
         }
     },
     {
@@ -59,7 +64,8 @@ const routes = [
         name: "Students",
         component: Students,
         meta: {
-            title: 'Estudantes'
+            title: 'Estudantes',
+            useLayout: true
         }
     },
     {
@@ -67,7 +73,8 @@ const routes = [
         name: "Announcement",
         component: Announcement,
         meta: {
-            title: 'Publicar Anúncio'
+            title: 'Publicar Anúncio',
+            useLayout: true
         }
     },
     {
@@ -75,7 +82,8 @@ const routes = [
         name: "Forum",
         component: Forums,
         meta: {
-            title: 'Fóruns Pendentes'
+            title: 'Fóruns Pendentes',
+            useLayout: true
         }
     },
     {
@@ -83,7 +91,8 @@ const routes = [
         name: "TccArea",
         component: TccArea,
         meta: {
-            title: 'Área TCC'
+            title: 'Área TCC',
+            useLayout: true
         }
     },
     {
@@ -91,7 +100,8 @@ const routes = [
         name: "ViewAllocations",
         component: ViewAllocations,
         meta: {
-            title: 'Visualizar Alocações'
+            title: 'Visualizar Alocações',
+            useLayout: true
         }
     },
     {
@@ -99,7 +109,8 @@ const routes = [
         name: "AddAllocations",
         component: AddAllocations,
         meta: {
-            title: 'Realizar Alocações'
+            title: 'Realizar Alocações',
+            useLayout: true
         }
     },
     {
@@ -107,7 +118,8 @@ const routes = [
         name: "RemoveAllocations",
         component: RemoveAllocations,
         meta: {
-            title: 'Remover Alocações'
+            title: 'Remover Alocações',
+            useLayout: true
         }
     }
 ]
@@ -118,7 +130,11 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    document.title = `${to.meta.title}`
+    if (to.meta.useLayout !== false) {
+        document.title = `${to.meta.title}`
+    } else {
+        document.title = "Login"
+    }
     next()
 })
 

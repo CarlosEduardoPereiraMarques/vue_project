@@ -74,7 +74,7 @@
           <td class="border px-2 py-2">{{ aluno.matricula }}</td>
           <td class="border px-2 py-2">{{ aluno.dataMatricula }}</td>
           <td class="border px-2 py-2">{{ aluno.eixo }}</td>
-          <td class="border px-4 py-2">{{ aluno.turma }}</td>
+          <td class="border px-2 py-2">{{ aluno.turma }}</td>
           <td class="border px-2 py-2">{{ aluno.telefone }}</td>
           <td class="border px-2 py-2">
             <div class="select-container">

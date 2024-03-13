@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <div class="w-screen h-screen flex">
+    <div class="w-screen h-screen flex ">
         <Sidebar :showSideBar="showSideBar" />
         <div class="w-full h-full bg-gray-400">
             <Menu :showSideBar="showSideBar" @toggle-sidebar="toggleSideBar" />
