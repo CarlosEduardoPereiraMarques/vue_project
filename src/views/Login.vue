@@ -12,11 +12,18 @@
 </template>
 
 <script>
+import { handleLogin } from '../utils/Authentication';
+
 export default {
     methods: {
-        handleLogin() {
-            this.$store.dispatch('getLogin')
-            this.$router.push('/home')
+        async handleLogin() {
+            try {
+                await handleLogin();
+                this.$router.push('/home');
+            } catch (error) {
+                console.error('Erro ao realizar login:', error);
+                // Fazer tratamento de erro
+            }
         }
     },
 };

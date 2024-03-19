@@ -1,10 +1,10 @@
 import { createStore } from "vuex";
-import { AuthHandler } from "../utils/Authentication";
 
 export default createStore({
     state: {
         userAuth: false,
-        userKey: null,
+        APIKey: null,
+        LMSKey: null,
         showLayout: false,
         userName: null,
         userRole: null,
@@ -16,15 +16,14 @@ export default createStore({
     mutations: {
         setUserAuth(state, payload) {
             state.userAuth = true
-            state.userKey = payload.key
+            state.APIKey = payload.api_token
+            state.LMSKey = payload.lms_token
             state.showLayout = true
-            state.userName = payload.name
-            state.userRole = payload.role
-            state.userPhoto = payload.photoUrl
+
         },
         deleteUserAuth(state) {
             state.userAuth = false
-            state.userKey = null
+            state.APIKey = null
             state.showLayout = false
             state.userName = null
             state.userRole = null
@@ -32,9 +31,8 @@ export default createStore({
         }
     },
     actions: {
-        async getLogin({ commit }) {
-            const auth = await AuthHandler()
-            commit('setUserAuth', auth)
+        async getLogin({ commit }, payload) {
+            commit('setUserAuth', payload)
         },
         getLogOut({ commit }) {
             commit('deleteUserAuth')

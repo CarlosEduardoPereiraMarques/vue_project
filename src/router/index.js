@@ -11,6 +11,7 @@ import TccArea from "../views/TccArea.vue";
 import ViewAllocations from "../views/ViewAllocations.vue";
 import AddAllocations from "../views/AddAllocations.vue";
 import RemoveAllocations from "../views/RemoveAllocations.vue";
+import Callback from "../views/Callback.vue";
 
 
 const routes = [
@@ -20,6 +21,14 @@ const routes = [
         component: Login,
         meta: {
             title: 'Login'
+        }
+    },
+    {
+        path: '/callback',
+        name: 'Callback',
+        component: Callback,
+        meta: {
+            title: 'Callback'
         }
     },
     {
