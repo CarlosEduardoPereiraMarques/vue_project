@@ -1,8 +1,7 @@
 <template>
     <div class="bg-scroll h-screen home-background">
-       <div class="w-11/12 md:w-96 h-99 bg-gray-300 bg-opacity-50 rounded-lg flex items-center justify-center">
-        <h1>Teste Lorem ipsum dolor sit amet consectetur adipisicing elit. Et ullam nostrum reiciendis neque modi temporibus animi illo unde adipisci in, laudantium magni odit, quasi eos dolorum iste dolore numquam sit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita, laborum! Fuga quibusdam provident qui expedita nemo, rerum, recusandae sint, ullam praesentium dolor nihil. Animi, nisi! Ducimus mollitia ad blanditiis esse.</h1>
-
+       <div class="px-8 py-12 bg-opacity-40 rounded-lg flex">
+        <h1 class="text-2xl text-left">Olá Guilherme de Oliveira Costa, você logou com sucesso.</h1>
        </div>
     </div>
   </template>
@@ -16,7 +15,12 @@
   <style scoped>
   /* Estilos específicos para este componente */
   .home-background {
-    background-image: url('src/assets/shutterstock_1831732183.jpg');
-    background-size: 100%
+        background-image: url('src/assets/shutterstock_1831732183.jpg');
+        background-size: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        max-width: 100%;
+        max-height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
   }
   </style>

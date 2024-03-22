@@ -1,7 +1,7 @@
 <template>
     <div>
       <h1 class="text-2xl font-bold mb-4">Alunos:</h1>
-      <div class="flex flex-nowrap mt-2 gap-4 px-8">
+      <div class="flex mt-2 gap-4 px-8">
         <div class="mt-2 flex gap-4">
             <button @click="showAbsentStudents = true" class="relative items-center py-[10px] px-[10px] bg-gray-600 text-white p-2 mr-4 rounded-md hover:bg-gray-400 transition duration-300">Ausentes há mais de 15 dias</button>
         </div>
