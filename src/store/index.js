@@ -8,7 +8,7 @@ export default createStore({
         tokenExpiresAt: null, // armazena a data de expiração do token
         showLayout: false, // Exibe e oculta o layout do usuário
         userName: null, // armazena o nome do usuário, vindo do LMS
-        userRole: null, // Assistente, Administrador e Administrador de Assistentes
+        userRole: 'Assistente Acadêmico', // Assistente, Administrador e Administrador de Assistentes
         userPhoto: null // armazena a url da foto do usuário, vindo do LMS
     },
     getters: {
@@ -31,9 +31,9 @@ export default createStore({
             state.userPhoto = null
         },
         setUserLMSData(state, payload) {
-            state.userName = payload.data.name
-            state.userRole = payload.data.role
-            state.userPhoto = payload.data.avatar_url
+            state.userName = payload.name
+            //state.userRole = payload.role
+            state.userPhoto = payload.avatar_url
         },
         setRefreshToken(state, payload) {
             state.LMSKey = payload.access_token

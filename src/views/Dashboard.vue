@@ -8,7 +8,6 @@
             <option selected disabled value="">Escolha um curso</option>
             <option v-for="course in courses" :key="course.id" :value="course.id">{{ course.name }}</option>
         </select>
-
         <button type="submit" class="bg-gray-600 text-white p-2 mt-2 rounded-md hover:bg-gray-400 transition duration-300"
             v-if="selectedCourse !== ''">
             Visualizar Dados

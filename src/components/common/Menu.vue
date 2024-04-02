@@ -34,7 +34,7 @@ export default {
         },
         userPhotoUrl: {
             get() {
-                return this.$store.state.userPhotoUrl
+                return this.$store.state.userPhoto
             }
         }
     },
