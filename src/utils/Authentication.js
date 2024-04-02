@@ -16,3 +16,16 @@ export function handleLogin() {
             });
     });
 }
+
+export function handleRefreshToken() {
+    return new Promise((resolve, reject) => {
+        APIInstance.get('oauth/refresh_token/')
+            .then(response => {
+                this.$store.commit('setRefreshToken', response.data);
+            })
+            .catch(error => {
+                console.error('Erro ao atualizar a data de expiração do token:', error);
+                reject(error);
+            });
+    })
+}

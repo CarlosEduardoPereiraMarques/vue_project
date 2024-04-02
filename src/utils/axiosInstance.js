@@ -8,7 +8,4 @@ export const APIInstance = axios.create({
     }
 })
 
-export const LMSAxiosInstance = axios.create({
-    baseURL: import.meta.env.VUE_APP_LMS_API
-})
 

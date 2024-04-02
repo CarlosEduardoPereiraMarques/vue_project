@@ -12,6 +12,7 @@ import ViewAllocations from "../views/ViewAllocations.vue";
 import AddAllocations from "../views/AddAllocations.vue";
 import RemoveAllocations from "../views/RemoveAllocations.vue";
 import Callback from "../views/Callback.vue";
+import SingleMessage from "../views/SingleMessage.vue";
 
 
 const routes = [
@@ -61,6 +62,15 @@ const routes = [
         component: Messages,
         meta: {
             title: 'Mensagens'
+        }
+    },
+    {
+        path: '/message/:id',
+        name: 'Single Message',
+        component: SingleMessage,
+        props: true,
+        meta: {
+            title: 'Mensagem'
         }
     },
     {
