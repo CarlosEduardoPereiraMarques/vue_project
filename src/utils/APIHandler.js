@@ -24,3 +24,48 @@ export async function Getter(url) {
         return error;
     }
 }
+
+export async function Poster(url, data) {
+    try {
+        refreshToken();
+        const response = await APIInstance.post(url, data, {
+            headers: {
+                Authorization: `Token ${store.state.APIKey}`,
+                'access-token': store.state.LMSKey,
+            }
+        });
+        return response.data;
+    } catch (error) {
+        return error;
+    }
+}
+
+export async function Putter(url, data) {
+    try {
+        refreshToken();
+        const response = await APIInstance.put(url, data, {
+            headers: {
+                Authorization: `Token ${store.state.APIKey}`,
+                'access-token': store.state.LMSKey,
+            }
+        });
+        return response.data;
+    } catch (error) {
+        return error;
+    }
+}
+
+export async function Deleter(url) {
+    try {
+        refreshToken();
+        const response = await APIInstance.delete(url, {
+            headers: {
+                Authorization: `Token ${store.state.APIKey}`,
+                'access-token': store.state.LMSKey,
+            }
+        });
+        return response.data;
+    } catch (error) {
+        return error;
+    }
+}

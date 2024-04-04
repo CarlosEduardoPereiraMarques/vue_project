@@ -1,7 +1,7 @@
 <template>
     <div class="bg-scroll h-screen home-background">
        <div class="px-8 py-12 bg-opacity-40 rounded-lg flex">
-        <h1 class="text-2xl text-left">Olá Guilherme de Oliveira Costa, você logou com sucesso.</h1>
+        <h1 class="text-2xl text-left">Olá {{ this.$store.state.userName }}, você logou com sucesso.</h1>
        </div>
     </div>
   </template>

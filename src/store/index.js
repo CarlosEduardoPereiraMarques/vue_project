@@ -5,6 +5,7 @@ export default createStore({
         userAuth: false, // controla se o usuário está logado
         APIKey: null, // armazena a chave de autenticação com a api interna
         LMSKey: null, // armazena a chave de autenticação com a api do LMS
+        refreshLMSKey: null,
         tokenExpiresAt: null, // armazena a data de expiração do token
         showLayout: false, // Exibe e oculta o layout do usuário
         userName: null, // armazena o nome do usuário, vindo do LMS
@@ -20,8 +21,8 @@ export default createStore({
         setUserAuth(state, payload) {
             state.userAuth = true
             state.APIKey = payload.api_token
+            state.refreshLMSKey = payload.refresh_token
             state.LMSKey = payload.lms_token
-            state.showLayout = true
             state.tokenExpiresAt = new Date(payload.expires_at).toISOString()
         },
         deleteUserAuth(state) {
@@ -33,6 +34,7 @@ export default createStore({
             state.userPhoto = null
         },
         setUserLMSData(state, payload) {
+            state.showLayout = true
             state.userName = payload.name
             //state.userRole = payload.role
             state.userPhoto = payload.avatar_url

@@ -16,20 +16,27 @@
 </template>
 
 <script>
+import { Getter } from '../utils/APIHandler';
 export default {
     data() {
         return {
             selectedCourse: '',
-            courses: [
-                { id: 1, name: 'Curso 1' },
-                { id: 2, name: 'Curso 2' },
-            ],
+            courses: [],
         };
     },
+    created() {
+        this.fetchCourses();
+    },
     methods: {
+        fetchCourses() {
+            const response = Getter('user-courses/')
+            this.courses = response.data
+        },
         handleSubmit() {
-            // fazer uma requisição na api para retornar os dados para a proxima página
-            this.$router.push('/dashboard-data')
+            // Fazer uma requisição na API para retornar os dados para a próxima página
+            // Substitua essa lógica pela requisição real necessária
+            console.log('Submetido com sucesso');
+            this.$router.push('/dashboard-data');
         },
     },
 };

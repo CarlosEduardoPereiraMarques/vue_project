@@ -1,4 +1,5 @@
 import { APIInstance } from "./axiosInstance"
+import store from "../store/index"
 
 export function handleLogout() {
     APIInstance.post()
@@ -19,7 +20,12 @@ export function handleLogin() {
 
 export function handleRefreshToken() {
     return new Promise((resolve, reject) => {
-        APIInstance.get('oauth/refresh_token/')
+        APIInstance.get('oauth/refresh_token', {
+            headers: {
+                Authorization: `Token ${store.state.APIKey}`,
+                'refresh-token': store.state.refreshLMSKey,
+            }
+        })
             .then(response => {
                 this.$store.commit('setRefreshToken', response.data);
             })
