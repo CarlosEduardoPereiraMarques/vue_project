@@ -12,7 +12,9 @@ export default createStore({
         userPhoto: null // armazena a url da foto do usuário, vindo do LMS
     },
     getters: {
-
+        isAuthenticated(state) {
+            return state.userAuth; // Retorna true se o usuário estiver autenticado, caso contrário, false
+        }
     },
     mutations: {
         setUserAuth(state, payload) {

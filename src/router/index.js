@@ -13,6 +13,7 @@ import AddAllocations from "../views/AddAllocations.vue";
 import RemoveAllocations from "../views/RemoveAllocations.vue";
 import Callback from "../views/Callback.vue";
 import SingleMessage from "../views/SingleMessage.vue";
+import store from "../store/index";
 
 
 const routes = [
@@ -21,7 +22,8 @@ const routes = [
         name: "Login",
         component: Login,
         meta: {
-            title: 'Login'
+            title: 'Login',
+            requiresAuth: false
         }
     },
     {
@@ -29,7 +31,9 @@ const routes = [
         name: 'Callback',
         component: Callback,
         meta: {
-            title: 'Callback'
+            title: 'Callback',
+            requiresAuth: false
+
         }
     },
     {
@@ -37,7 +41,8 @@ const routes = [
         name: "HomePage",
         component: HomePage,
         meta: {
-            title: 'Home'
+            title: 'Home',
+            requiresAuth: true
         }
     },
     {
@@ -45,7 +50,8 @@ const routes = [
         name: "Dashboard",
         component: Dashboard,
         meta: {
-            title: 'Dashboard'
+            title: 'Dashboard',
+            requiresAuth: true
         }
     },
     {
@@ -53,7 +59,8 @@ const routes = [
         name: "Dashboard Data",
         component: DashboardData,
         meta: {
-            title: 'Informações do Curso'
+            title: 'Informações do Curso',
+            requiresAuth: true
         }
     },
     {
@@ -61,7 +68,8 @@ const routes = [
         name: "Messages",
         component: Messages,
         meta: {
-            title: 'Mensagens'
+            title: 'Mensagens',
+            requiresAuth: true
         }
     },
     {
@@ -70,7 +78,8 @@ const routes = [
         component: SingleMessage,
         props: true,
         meta: {
-            title: 'Mensagem'
+            title: 'Mensagem',
+            requiresAuth: true
         }
     },
     {
@@ -78,7 +87,8 @@ const routes = [
         name: "Students",
         component: Students,
         meta: {
-            title: 'Estudantes'
+            title: 'Estudantes',
+            requiresAuth: true
         }
     },
     {
@@ -86,7 +96,8 @@ const routes = [
         name: "Announcement",
         component: Announcement,
         meta: {
-            title: 'Publicar Anúncio'
+            title: 'Publicar Anúncio',
+            requiresAuth: true
         }
     },
     {
@@ -94,7 +105,8 @@ const routes = [
         name: "Forum",
         component: Forums,
         meta: {
-            title: 'Fóruns Pendentes'
+            title: 'Fóruns Pendentes',
+            requiresAuth: true
         }
     },
     {
@@ -102,7 +114,8 @@ const routes = [
         name: "TccArea",
         component: TccArea,
         meta: {
-            title: 'Área TCC'
+            title: 'Área TCC',
+            requiresAuth: true
         }
     },
     {
@@ -110,7 +123,8 @@ const routes = [
         name: "ViewAllocations",
         component: ViewAllocations,
         meta: {
-            title: 'Visualizar Alocações'
+            title: 'Visualizar Alocações',
+            requiresAuth: true
         }
     },
     {
@@ -118,7 +132,8 @@ const routes = [
         name: "AddAllocations",
         component: AddAllocations,
         meta: {
-            title: 'Realizar Alocações'
+            title: 'Realizar Alocações',
+            requiresAuth: true
         }
     },
     {
@@ -126,7 +141,8 @@ const routes = [
         name: "RemoveAllocations",
         component: RemoveAllocations,
         meta: {
-            title: 'Remover Alocações'
+            title: 'Remover Alocações',
+            requiresAuth: true
         }
     }
 ]
@@ -142,14 +158,13 @@ router.beforeEach((to, from, next) => {
     } else {
         document.title = "Login"
     }
-    next()
-})
-
-export default router
 
 
+    if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
+        next({ name: 'Login' });
+    } else {
+        next();
+    }
+});
 
-
-
-
-
+export default router;
