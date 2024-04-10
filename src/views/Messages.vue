@@ -1,10 +1,9 @@
 <template>
     <div class="container mx-auto">
       <h1 class="text-3xl font-semibold mb-6">Caixa de Entrada</h1>
+
       <div v-if="loading" class="text-gray-500">Carregando...</div>
-      <div v-else-if="messages.length === 0" class="text-gray-500">
-        Nenhuma mensagem pendente.
-      </div>
+      <div v-else-if="messages.length === 0" class="text-gray-500">Nenhuma mensagem pendente.</div>
       <div v-else>
         <ul>
           <li v-for="(message, index) in messages" :key="index" class="message-item mb-4">
@@ -72,5 +71,20 @@
 
   .message-item:hover {
     background-color: #f3f4f6;
+  }
+
+  
+  .message-item img {
+    border: 2px solid #e2e8f0;
+  }
+
+
+  .message-item .text-blue-500 {
+    font-weight: bold;
+  }
+
+
+  .message-item .text-gray-500 {
+    font-style: italic;
   }
   </style>
