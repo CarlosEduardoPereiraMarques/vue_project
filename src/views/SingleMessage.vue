@@ -63,7 +63,7 @@
                                 Marcar como não lido
                             </button>
                         </div>
-                        <div v-else @click="markAsRead">
+                        <div v-else-if="chat.workflow_state == 'unread'" @click="markAsRead" v-show="!isVisible">
                             <button title="Clique para marcar como lido"
                                 class="flex items-center bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-400 transition duration-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -168,6 +168,7 @@ export default {
         },
         async submitResponse() {
             await Poster(`send_message/${this.id}/${this.messageText}`)
+            await Getter(`set_message_read/${this.id}/`)
             this.messageText = '';
             this.isVisible = false;
             this.$router.push('/messages')

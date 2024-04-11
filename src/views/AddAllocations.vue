@@ -11,7 +11,7 @@
         </div>
         <div class="w-2/5">
           <h1>Curso</h1>
-          <select v-model="cursoInput" class="bg-gray-250 w-96 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-400 focus:border-gray-500 block w-full p-2.5 hover:bg-gray-100 transition duration-300">
+          <select v-model="cursoInput" class="bg-gray-250 w-96 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-400 focus:border-gray-500 block p-2.5 hover:bg-gray-100 transition duration-300">
             <option value="opcao1">Opção 1</option>
             <option value="opcao2">Opção 2</option>
             <option value="opcao3">Opção 3</option>
