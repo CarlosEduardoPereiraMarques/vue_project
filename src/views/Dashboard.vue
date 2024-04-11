@@ -21,7 +21,10 @@ export default {
     data() {
         return {
             selectedCourse: '',
-            courses: [],
+            courses: [
+                { id: 1, name: 'Curso 1' },
+                { id: 2, name: 'Curso 2' },
+            ],
         };
     },
     created() {
@@ -29,8 +32,8 @@ export default {
     },
     methods: {
         fetchCourses() {
-            const response = Getter('user-courses/')
-            this.courses = response.data
+            // const response = Getter('user-courses/')
+            // this.courses = response.data
         },
         handleSubmit() {
             // Fazer uma requisição na API para retornar os dados para a próxima página

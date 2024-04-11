@@ -1,6 +1,9 @@
 <template>
     <div class="container mx-auto p-[20px]">
-      <h1 class="text-3xl font-semibold mb-6">Caixa de Entrada</h1>
+      <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-semibold mb-6">Caixa de Entrada</h1>
+        <a href="https://pucminas.instructure.com/conversations#filter=type=inbox" target="__blank" class="font-semibold mb-6 bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-400 transition duration-300">Adicionar nova Mensagem</a>
+      </div>
       <div v-if="loading" class="text-gray-500">Carregando...</div>
       <div v-else-if="messages.length === 0" class="text-gray-500">Nenhuma mensagem pendente.</div>
       <div v-else>
