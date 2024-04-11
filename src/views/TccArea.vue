@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="p-[20px]">
         TCC Area
     </div>
 </template>

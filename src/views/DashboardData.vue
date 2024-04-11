@@ -9,7 +9,7 @@ import SubmissionsPendingReview from '../components/Assignment/SubmissionsPendin
 </script>
 
 <template>
-    <main>
+    <main class="p-[20px]">
     <!-- Fazer uma verificação antes dos cursos do usuário para fazer uma lista para ele poder ingressar e ver os dados retornados do curso selecionado -->
         <div class="inline-flex relative items-center mb-5 w-full justify-between">
             <div>

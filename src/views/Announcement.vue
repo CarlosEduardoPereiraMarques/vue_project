@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="size-full md:size-auto bg-slate-300 bg-opacity-85 text-black text-center rounded-lg p-4">
+        <div class="size-full md:size-auto bg-slate-300 bg-opacity-85 text-black text-center rounded-lg p-[20px]">
             <form class="space-y-4" @submit.prevent="handleSubmit">
                 <div>
                     <label for="courses" class="block mt-0 text-base font-medium text-gray-900">

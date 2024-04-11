@@ -1,7 +1,6 @@
 <template>
-    <div class="container mx-auto">
+    <div class="container mx-auto p-[20px]">
       <h1 class="text-3xl font-semibold mb-6">Caixa de Entrada</h1>
-
       <div v-if="loading" class="text-gray-500">Carregando...</div>
       <div v-else-if="messages.length === 0" class="text-gray-500">Nenhuma mensagem pendente.</div>
       <div v-else>
@@ -73,7 +72,7 @@
     background-color: #f3f4f6;
   }
 
-  
+
   .message-item img {
     border: 2px solid #e2e8f0;
   }

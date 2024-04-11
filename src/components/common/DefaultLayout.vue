@@ -10,7 +10,7 @@
         <div class="w-full h-full bg-gray-400">
             <Menu :showSideBar="showSideBar" @toggle-sidebar="toggleSideBar" />
             <div class="h-[calc(100vh-50px)] bg-gray-50 p-[20px]">
-                <div class="border border-gray-300 rounded-md p-[20px] h-full overflow-x-hidden overflow-y-auto">
+                <div class="border border-gray-300 rounded-md h-full overflow-x-hidden overflow-y-auto">
                     <router-view/>
                 </div>
             </div>

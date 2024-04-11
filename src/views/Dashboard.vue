@@ -1,5 +1,5 @@
 <template>
-    <form class="max-w-sm mx-auto" @submit.prevent="handleSubmit">
+    <form class="max-w-sm mx-auto p-[20px]" @submit.prevent="handleSubmit">
         <label for="courses" class="block mb-2 text-sm font-medium text-gray-900">
             <h1>Selecione um curso:</h1>
         </label>

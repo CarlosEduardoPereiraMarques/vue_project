@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="p-[20px]">
       <div class="input-container flex justify-between items-center mb-4">
         <div class="w-1/6">
           <h1>Ano</h1>

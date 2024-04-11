@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="p-[20px]">
       <h1 class="text-2xl font-bold mb-4">Alunos:</h1>
       <div class="flex mt-2 gap-4 px-8">
         <div class="mt-2 flex gap-4">
